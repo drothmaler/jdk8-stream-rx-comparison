@@ -31,23 +31,23 @@ import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Warmup;
 
-import com.gs.collections.api.block.function.Function;
-import com.gs.collections.api.block.function.primitive.IntFunction;
-import com.gs.collections.api.block.function.primitive.LongFunction;
-import com.gs.collections.api.block.predicate.Predicate;
-import com.gs.collections.api.list.MutableList;
-import com.gs.collections.api.map.MutableMap;
-import com.gs.collections.impl.list.mutable.FastList;
-import com.gs.collections.impl.list.mutable.primitive.CharArrayList;
-import com.gs.collections.impl.map.sorted.mutable.TreeSortedMap;
-import com.gs.collections.impl.set.mutable.UnifiedSet;
+import org.eclipse.collections.api.block.function.Function;
+import org.eclipse.collections.api.block.function.primitive.IntFunction;
+import org.eclipse.collections.api.block.function.primitive.LongFunction;
+import org.eclipse.collections.api.block.predicate.Predicate;
+import org.eclipse.collections.api.list.MutableList;
+import org.eclipse.collections.api.map.MutableMap;
+import org.eclipse.collections.impl.list.mutable.FastList;
+import org.eclipse.collections.impl.list.mutable.primitive.CharArrayList;
+import org.eclipse.collections.impl.map.sorted.mutable.TreeSortedMap;
+import org.eclipse.collections.impl.set.mutable.UnifiedSet;
 import org.paumard.jdk8.bench.ShakespearePlaysScrabble;
 
 /**
  *
  * @author José
  */
-public class ShakespearePlaysScrabbleWithGSCollections extends ShakespearePlaysScrabble {
+public class ShakespearePlaysScrabbleWithEclipseCollections extends ShakespearePlaysScrabble {
 
     @Benchmark
     @BenchmarkMode(Mode.AverageTime)
