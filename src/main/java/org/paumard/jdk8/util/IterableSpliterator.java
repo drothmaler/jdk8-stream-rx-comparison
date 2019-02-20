@@ -23,8 +23,8 @@ import java.util.Spliterators;
 
 public class IterableSpliterator<T>  {
 
-	public static <T> Iterable<T> of(Spliterator<T> spliterator) {
+    public static <T> Iterable<T> of(Spliterator<T> spliterator) {
 
-		return () -> Spliterators.iterator(spliterator)	;
-	}
+        return () -> Spliterators.iterator(spliterator)    ;
+    }
 }

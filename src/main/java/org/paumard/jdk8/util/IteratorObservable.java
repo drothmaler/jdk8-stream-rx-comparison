@@ -27,29 +27,29 @@ import rx.Observable;
 
 public class IteratorObservable<E> {
 
-	
-	interface Wrapper<E> {
-		E get() ;
-		
-		default Wrapper<E> set(E e) {
-			return () -> e ;
-		}
-	}
 
-	public static <E> Iterator<E> of(Observable<E> observable) {
-		Objects.requireNonNull(observable) ;
-		
-		class Adapter implements Iterator<E>, Consumer<E> {
-			
-			Wrapper<Boolean> valueReady ;
+    interface Wrapper<E> {
+        E get() ;
+
+        default Wrapper<E> set(E e) {
+            return () -> e ;
+        }
+    }
+
+    public static <E> Iterator<E> of(Observable<E> observable) {
+        Objects.requireNonNull(observable) ;
+
+        class Adapter implements Iterator<E>, Consumer<E> {
+
+            Wrapper<Boolean> valueReady ;
             Wrapper<E> nextElement;
-            
+
             public Adapter() {
-            	observable.subscribe(
-            		e -> nextElement.set(e), 
-            		t -> valueReady.set(false), 
-            		() -> valueReady.set(false)
-            	) ;
+                observable.subscribe(
+                    e -> nextElement.set(e),
+                    t -> valueReady.set(false),
+                    () -> valueReady.set(false)
+                ) ;
             }
 
             @Override
@@ -75,5 +75,5 @@ public class IteratorObservable<E> {
         }
 
         return new Adapter();
-	}
+    }
 }

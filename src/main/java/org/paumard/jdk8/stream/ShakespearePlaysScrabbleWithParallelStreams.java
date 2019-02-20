@@ -30,7 +30,7 @@ import org.openjdk.jmh.annotations.Mode;
 @BenchmarkMode(Mode.AverageTime)
 public class ShakespearePlaysScrabbleWithParallelStreams extends ShakespearePlaysScrabbleWithStreams {
 
-	Stream<String> buildShakerspeareWordsStream() {
-		return shakespeareWords.stream().parallel() ;
-	}
+    Stream<String> buildShakerspeareWordsStream() {
+        return shakespeareWords.stream().parallel() ;
+    }
 }
