@@ -70,7 +70,7 @@ public abstract class ShakespearePlaysScrabbleWithStreams extends ShakespearePla
                     letterScores[entry.getKey() - 'a']*
                     Integer.min(
                         entry.getValue().intValue(),
-                        (int)scrabbleAvailableLetters[entry.getKey() - 'a']
+                            scrabbleAvailableLetters[entry.getKey() - 'a']
                     );
 
 

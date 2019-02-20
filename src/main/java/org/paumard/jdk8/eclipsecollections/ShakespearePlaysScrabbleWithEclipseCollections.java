@@ -71,18 +71,18 @@ public class ShakespearePlaysScrabbleWithEclipseCollections extends ShakespeareP
                     letterScores[entry.getKey() - 'a']*
                     Integer.min(
                         entry.getValue().intValue(),
-                        (int)scrabbleAvailableLetters[entry.getKey() - 'a']
+                            scrabbleAvailableLetters[entry.getKey() - 'a']
                     );
 
         // Histogram of the letters in a given word
         Function<String, MutableMap<Integer, Long>> histoOfLetters =
                 word -> new CharArrayList(word.toCharArray())
-                            .collect(c -> new Integer((int)c))
+                            .collect(c -> (int) c)
                             // .groupBy(letter -> letter) ;
                             .aggregateBy(
                                     letter -> letter,
                                     () -> 0L,
-                                    (value, letter) -> { return value + 1 ; }) ;
+                                    (value, letter) -> value + 1) ;
 
         // number of blanks for a given letter
         LongFunction<Entry<Integer, Long>> blank =
@@ -123,7 +123,7 @@ public class ShakespearePlaysScrabbleWithEclipseCollections extends ShakespeareP
 
         Function<String, MutableList<Integer>> last3 =
                 word -> new CharArrayList(word.toCharArray())
-                                .collect(c -> new Integer((int)c))
+                                .collect(c -> (int) c)
                                 .subList(Integer.max(0, word.length() - 4), word.length()) ;
 
         // Stream to be maxed
@@ -147,7 +147,7 @@ public class ShakespearePlaysScrabbleWithEclipseCollections extends ShakespeareP
                 + (word.length() == 7 ? 50 : 0);
 
         Function<Function<String, Integer>, MutableMap<Integer, MutableList<String>>> buildHistoOnScore =
-            score -> new UnifiedSet<String>(shakespeareWords)
+            score -> new UnifiedSet<>(shakespeareWords)
                         .select(scrabbleWords::contains)
                         .select(checkBlanks)
                         .aggregateBy(
@@ -161,10 +161,10 @@ public class ShakespearePlaysScrabbleWithEclipseCollections extends ShakespeareP
 
         // best key / value pairs
         MutableList<Entry<Integer, MutableList<String>>> finalList =
-                new FastList<Entry<Integer,MutableList<String>>>(
-                        new TreeSortedMap<Integer, MutableList<String>>(
-                            Comparator.reverseOrder(),
-                            buildHistoOnScore.valueOf(score3)
+                new FastList<>(
+                        new TreeSortedMap<>(
+                                Comparator.reverseOrder(),
+                                buildHistoOnScore.valueOf(score3)
                         ).entrySet()
                 ).subList(0, 3) ;
 
